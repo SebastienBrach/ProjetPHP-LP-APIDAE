@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BandRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,22 @@ class Band
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $last_album_name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=member::class, mappedBy="band")
+     */
+    private $members;
+
+    /**
+     * @ORM\OneToMany(targetEntity=showconcert::class, mappedBy="band")
+     */
+    private $show_concerts;
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+        $this->show_concerts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +121,66 @@ class Band
     public function setLastAlbumName(?string $last_album_name): self
     {
         $this->last_album_name = $last_album_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|member[]
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
+
+    public function addMember(member $member): self
+    {
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
+            $member->setBand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(member $member): self
+    {
+        if ($this->members->removeElement($member)) {
+            // set the owning side to null (unless already changed)
+            if ($member->getBand() === $this) {
+                $member->setBand(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|showconcert[]
+     */
+    public function getShowConcerts(): Collection
+    {
+        return $this->show_concerts;
+    }
+
+    public function addShowConcert(showconcert $showConcert): self
+    {
+        if (!$this->show_concerts->contains($showConcert)) {
+            $this->show_concerts[] = $showConcert;
+            $showConcert->setBand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShowConcert(showconcert $showConcert): self
+    {
+        if ($this->show_concerts->removeElement($showConcert)) {
+            // set the owning side to null (unless already changed)
+            if ($showConcert->getBand() === $this) {
+                $showConcert->setBand(null);
+            }
+        }
 
         return $this;
     }

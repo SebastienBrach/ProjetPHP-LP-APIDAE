@@ -42,6 +42,12 @@ class Member
      */
     private $picture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Band::class, inversedBy="members")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $band;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +109,18 @@ class Member
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getBand(): ?Band
+    {
+        return $this->band;
+    }
+
+    public function setBand(?Band $band): self
+    {
+        $this->band = $band;
 
         return $this;
     }

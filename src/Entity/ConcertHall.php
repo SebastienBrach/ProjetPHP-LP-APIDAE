@@ -37,6 +37,12 @@ class ConcertHall
      */
     private $city;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Hall::class, inversedBy="concert_halls")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $hall;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class ConcertHall
     public function setCity(?string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getHall(): ?Hall
+    {
+        return $this->hall;
+    }
+
+    public function setHall(?Hall $hall): self
+    {
+        $this->hall = $hall;
 
         return $this;
     }

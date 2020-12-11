@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HallRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,22 @@ class Hall
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $available;
+
+    /**
+     * @ORM\OneToMany(targetEntity=concerthall::class, mappedBy="hall")
+     */
+    private $concert_halls;
+
+    /**
+     * @ORM\OneToMany(targetEntity=showconcert::class, mappedBy="hall")
+     */
+    private $show_concerts;
+
+    public function __construct()
+    {
+        $this->concert_halls = new ArrayCollection();
+        $this->show_concerts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +87,66 @@ class Hall
     public function setAvailable(?bool $available): self
     {
         $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|concerthall[]
+     */
+    public function getConcertHalls(): Collection
+    {
+        return $this->concert_halls;
+    }
+
+    public function addConcertHall(concerthall $concertHall): self
+    {
+        if (!$this->concert_halls->contains($concertHall)) {
+            $this->concert_halls[] = $concertHall;
+            $concertHall->setHall($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConcertHall(concerthall $concertHall): self
+    {
+        if ($this->concert_halls->removeElement($concertHall)) {
+            // set the owning side to null (unless already changed)
+            if ($concertHall->getHall() === $this) {
+                $concertHall->setHall(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|showconcert[]
+     */
+    public function getShowConcerts(): Collection
+    {
+        return $this->show_concerts;
+    }
+
+    public function addShowConcert(showconcert $showConcert): self
+    {
+        if (!$this->show_concerts->contains($showConcert)) {
+            $this->show_concerts[] = $showConcert;
+            $showConcert->setHall($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShowConcert(showconcert $showConcert): self
+    {
+        if ($this->show_concerts->removeElement($showConcert)) {
+            // set the owning side to null (unless already changed)
+            if ($showConcert->getHall() === $this) {
+                $showConcert->setHall(null);
+            }
+        }
 
         return $this;
     }

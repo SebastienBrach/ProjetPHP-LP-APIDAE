@@ -27,6 +27,18 @@ class ShowConcert
      */
     private $tour_name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Band::class, inversedBy="show_concerts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $band;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Hall::class, inversedBy="show_concerts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $hall;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class ShowConcert
     public function setTourName(?string $tour_name): self
     {
         $this->tour_name = $tour_name;
+
+        return $this;
+    }
+
+    public function getBand(): ?Band
+    {
+        return $this->band;
+    }
+
+    public function setBand(?Band $band): self
+    {
+        $this->band = $band;
+
+        return $this;
+    }
+
+    public function getHall(): ?Hall
+    {
+        return $this->hall;
+    }
+
+    public function setHall(?Hall $hall): self
+    {
+        $this->hall = $hall;
 
         return $this;
     }
