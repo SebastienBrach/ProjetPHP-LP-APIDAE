@@ -20,4 +20,17 @@ class BandController extends AbstractController
             'bands' => $bands,
         ]);
     }
+
+    /**
+     * @Route("/band/{id}", name="band_show")
+     */
+    public function list(int $id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Band::class);
+
+        return $this->render('band/band.html.twig', [
+                'band' => $repository->find($id)
+            ]
+        );
+    }
 }

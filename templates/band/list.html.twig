@@ -2,10 +2,19 @@
 
 {% block body %}
 
-{% for band in bands %}
+<div class="container">
+    <h1> Plusieurs groupes se sont produits dans nos salles de concerts.</h1>
+    <div class="container">
+    {% for band in bands %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ asset('images/'~ band.picture) }}" alt="Card image for band">
+        <div class="card-body">
+            <p class="card-text text-center"><a href="{{ path('band_show', {id: band.id}) }}">{{ band.name }}</a>
+            </p>
+        </div>
+    </div>
+        </div>
+    {% endfor %}
+    </div>
 
-<h1>{{ band.name }}</h1>
-
-{% endfor %}
-
-{% endblock %}
+{% endblock %} 
