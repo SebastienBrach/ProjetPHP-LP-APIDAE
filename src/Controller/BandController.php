@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Band;
+
 
 class BandController extends AbstractController
 {
@@ -16,15 +18,6 @@ class BandController extends AbstractController
         $bands = $repository->findAll();
         return $this->render('band/list.html.twig', [
             'band' => $bands,
-        ]);
-    }
-
-    /**
-     * @Route("/bands/{id}", name="band_show")
-     */
-    public function listeConcert(): Response {
-        return $this->render('concert/liste.html.twig', [
-                'concerts' => ['XXXTentation', 'Alpha Wann'],
         ]);
     }
 }
