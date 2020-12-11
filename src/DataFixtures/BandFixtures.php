@@ -6,8 +6,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Band;
-use App\Entity\M;
-
 
 class BandFixtures extends Fixture implements DependentFixtureInterface {
 
