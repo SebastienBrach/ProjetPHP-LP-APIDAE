@@ -45,12 +45,12 @@ class Band
     private $last_album_name;
 
     /**
-     * @ORM\OneToMany(targetEntity=member::class, mappedBy="band")
+     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="band")
      */
     private $members;
 
     /**
-     * @ORM\OneToMany(targetEntity=showconcert::class, mappedBy="band")
+     * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
      */
     private $show_concerts;
 

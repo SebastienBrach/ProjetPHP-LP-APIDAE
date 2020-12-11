@@ -35,12 +35,12 @@ class Hall
     private $available;
 
     /**
-     * @ORM\OneToMany(targetEntity=concerthall::class, mappedBy="hall")
+     * @ORM\OneToMany(targetEntity=ConcertHall::class, mappedBy="hall")
      */
     private $concert_halls;
 
     /**
-     * @ORM\OneToMany(targetEntity=showconcert::class, mappedBy="hall")
+     * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="hall")
      */
     private $show_concerts;
 
