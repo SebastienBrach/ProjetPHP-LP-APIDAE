@@ -11,20 +11,18 @@ class ConcertController extends AbstractController
     /**
      * @Route("/concert", name="concert")
      */
-    public function index(): Response
-    {
+    public function index(): Response {
         return $this->render('concert/index.html.twig', [
-            'controller_name' => 'ConcertController',
+            'controller_name' => 'Licence APIDAE',
         ]);
     }
 
-     /**
-     * @Route("/list", name="liste")
+    /**
+     * @Route("/concert/liste", name="liste")
      */
-    public function liste(): Response
-    {
-        return $this->render('concert/index.html.twig', [
-
+    public function listeConcert(): Response {
+        return $this->render('concert/liste.html.twig', [
+                'concerts' => ['XXXTentation', 'Alpha Wann'],
         ]);
     }
 }
