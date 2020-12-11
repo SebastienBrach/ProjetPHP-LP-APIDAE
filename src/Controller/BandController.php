@@ -24,8 +24,7 @@ class BandController extends AbstractController
     /**
      * @Route("/band/{id}", name="band_show")
      */
-    public function list(int $id): Response
-    {
+    public function list(int $id): Response {
         $repository = $this->getDoctrine()->getRepository(Band::class);
 
         return $this->render('band/band.html.twig', [

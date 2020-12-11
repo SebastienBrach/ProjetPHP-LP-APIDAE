@@ -21,8 +21,11 @@ class ConcertController extends AbstractController
      * @Route("/concerts", name="concert")
      */
     public function listeConcert(): Response {
+
+        $repository = $this->getDoctrine()->getRepository(Concert::class);
+        $concerts = $repository->findAll();
         return $this->render('concert/liste.html.twig', [
-                'concerts' => ['XXXTentation', 'Alpha Wann'],
+            'concerts' => $concerts,
         ]);
     }
 }
