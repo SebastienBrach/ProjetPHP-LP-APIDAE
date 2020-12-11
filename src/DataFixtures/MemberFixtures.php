@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Member;
+use App\Entity\Band;
+
 
 class MemberFixtures extends Fixture
 {
