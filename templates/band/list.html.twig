@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
+
+{% for band in bands %}
+
+<h1>{{ band.name }}</h1>
+
+{% endfor %}
+
 {% endblock %}

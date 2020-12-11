@@ -17,7 +17,7 @@ class BandController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Band::class);
         $bands = $repository->findAll();
         return $this->render('band/list.html.twig', [
-            'band' => $bands,
+            'bands' => $bands,
         ]);
     }
 }
