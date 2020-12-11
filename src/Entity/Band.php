@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\BandRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=BandRepository::class)
+ */
+class Band
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $style;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $year_of_creation;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $last_album_name;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(string $style): self
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getYearOfCreation(): ?\DateTimeInterface
+    {
+        return $this->year_of_creation;
+    }
+
+    public function setYearOfCreation(\DateTimeInterface $year_of_creation): self
+    {
+        $this->year_of_creation = $year_of_creation;
+
+        return $this;
+    }
+
+    public function getLastAlbumName(): ?string
+    {
+        return $this->last_album_name;
+    }
+
+    public function setLastAlbumName(?string $last_album_name): self
+    {
+        $this->last_album_name = $last_album_name;
+
+        return $this;
+    }
+}
