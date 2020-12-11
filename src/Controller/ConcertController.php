@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConcertController extends AbstractController
 {
     /**
-     * @Route("/concert", name="concert")
+     * @Route("/", name="")
      */
     public function index(): Response {
         return $this->render('concert/index.html.twig', [
@@ -18,7 +18,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/concert/liste", name="liste")
+     * @Route("/concerts", name="concert")
      */
     public function listeConcert(): Response {
         return $this->render('concert/liste.html.twig', [
