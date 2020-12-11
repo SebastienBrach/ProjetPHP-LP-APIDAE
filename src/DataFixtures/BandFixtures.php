@@ -6,11 +6,12 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Band;
+use App\Entity\M;
 
-class BandFixtures extends Fixture implements DependentFixtureInterface
-{
-    public function load(ObjectManager $manager)
-    {
+
+class BandFixtures extends Fixture implements DependentFixtureInterface {
+
+    public function load(ObjectManager $manager) {
         $b1 = new Band();
         $b1->setName('Korn')
             ->setStyle('Metal')
@@ -24,14 +25,10 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
             ->addMember($this->getReference(MemberFixtures::KORN_5));
 
         $manager->persist($b1);
-
         $manager->flush();
     }
 
-    public function getDependencies()
-    {
-        return array(
-            MemberFixtures::class,
-        );
+    public function getDependencies() {
+        return array(MemberFixtures::class);
     }
 }
