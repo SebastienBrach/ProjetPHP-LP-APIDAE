@@ -17,4 +17,14 @@ class ConcertController extends AbstractController
             'controller_name' => 'ConcertController',
         ]);
     }
+
+     /**
+     * @Route("/list", name="liste")
+     */
+    public function liste(): Response
+    {
+        return $this->render('concert/index.html.twig', [
+
+        ]);
+    }
 }
