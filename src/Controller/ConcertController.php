@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\ShowConcert;
+use App\Form\ConcertType;
+
 
 class ConcertController extends AbstractController
 {
@@ -34,11 +36,44 @@ class ConcertController extends AbstractController
     /**
      * @Route("/concert/form", name="form")
      */
-    public function addConcert(): Response {
-        $form = $this->createForm(ShowConcert::class);        
+    public function addConcert(Request $request): Response {
+        $show = new ShowConcert();
+        $form = $this->createForm(ConcertType::class, $show);
+
+        $form->handleRequest($request);
+        if($form->isSubmited() && $form->isValid()) {
+            $show = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($show);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('concert_success');
+        }
 
         return $this->render('concert/formInsert.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
+
+    // /**
+    //  * @Route("/concert/form", name="form")
+    //  */
+    // public function editConcert(Request $request, ShowConcert $concert): Response {
+
+    //     $form = $this->createForm(ConcertType::class, $concert);        
+
+    //     $form->handleRequest($request);
+    //     if($form->isSubmited() && $form->isValid()) {
+    //         $show = $form->getData();
+
+    //         $entityManager = $this->getDoctrine()->getManager();
+    //         $entityManager->persist($concert);
+    //         $entityManager->flush();
+    //     }
+
+
+        
+    // }
 }
