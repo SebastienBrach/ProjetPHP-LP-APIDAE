@@ -13,7 +13,7 @@ use App\Form\ConcertType;
 class ConcertController extends AbstractController
 {
     /**
-     * @Route("/", name="")
+     * @Route("/", name="home")
      */
     public function index(): Response {
         return $this->render('concert/index.html.twig', [
