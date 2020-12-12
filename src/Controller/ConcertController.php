@@ -34,9 +34,10 @@ class ConcertController extends AbstractController
      * @Route("/concert/form", name="form")
      */
     public function addConcert(): Response {
+        $form = $this->createForm(ShowConcert::class);        
 
         return $this->render('concert/formInsert.html.twig', [
-            'concerts' => 'test',
+            'form' => $form->createView(),
         ]);
     }
 }

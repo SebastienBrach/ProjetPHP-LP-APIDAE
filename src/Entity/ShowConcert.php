@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ShowConcertRepository;
 use Doctrine\ORM\Mapping as ORM;
+// use Symfony\Component\Form\FormTypeInterface
 
 /**
  * @ORM\Entity(repositoryClass=ShowConcertRepository::class)
