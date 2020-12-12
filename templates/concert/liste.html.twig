@@ -4,9 +4,9 @@
 
 {% block body %}
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-  <div class="col-md-5 p-lg-5 mx-auto my-5">
-    <h1 class="display-4 font-weight-normal">Liste des concerts</h1>
-    <p class="lead font-weight-normal"><i>Yeah Dude</i></p>
+  <div class="col-md-5 p-lg-3 mx-auto my-3">
+      <h1 class="display-4 font-weight-normal">Liste des concerts</h1>
+      <p class="lead font-weight-normal"><i>Yeah Dude</i></p>
   </div>
 </div>
 
@@ -27,13 +27,16 @@
       <tr>
         <th>{{ concert.band.name }}</th>
         <td>{{ concert.tourName }}</td>
-        <td>{{ concert.date.date|format_datetime() }}</td>
-        <td></td>
-        <td></td>
+        <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
+        <td><input type="button" class="btn btn-primary" value="Modifier"></td>
+        <td><input type="button" class="btn btn-danger" value="Supprimer"></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  <a href="/concert/form">Créer un nouveau concert</a>
+
   </div>
 </div>
 

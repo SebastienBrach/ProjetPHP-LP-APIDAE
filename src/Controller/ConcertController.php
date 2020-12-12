@@ -29,4 +29,14 @@ class ConcertController extends AbstractController
             'concerts' => $concerts,
         ]);
     }
+
+    /**
+     * @Route("/concert/form", name="form")
+     */
+    public function addConcert(): Response {
+
+        return $this->render('concert/formInsert.html.twig', [
+            'concerts' => 'test',
+        ]);
+    }
 }
