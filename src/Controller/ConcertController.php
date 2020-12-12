@@ -47,14 +47,14 @@ class ConcertController extends AbstractController
             $entityManager->persist($show);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Concert ajouté avec succés !');
             return $this->redirectToRoute('liste_concert');
-        }
+        }   
 
         return $this->render('concert/formInsert.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/concert/edit/{id}", name="edit_concert")
@@ -62,8 +62,8 @@ class ConcertController extends AbstractController
     public function editConcert(Request $request, ShowConcert $concert): Response {
         $form = $this->createForm(ConcertType::class, $concert);        
         $form->handleRequest($request);
-
-        if($form->isSubmited() && $form->isValid()) {
+        
+        if($form->isSubmitted() && $form->isValid()) {
             $show = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -78,4 +78,18 @@ class ConcertController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/concert/delete/{id}", name="delete_concert")
+     */
+    public function deleteConcert(Request $request, ShowConcert $concert): Response {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($concert);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Concert supprimé !');
+        return $this->redirectToRoute('liste_concert');
+    }
 }
+
