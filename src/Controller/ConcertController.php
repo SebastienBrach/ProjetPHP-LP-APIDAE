@@ -39,7 +39,6 @@ class ConcertController extends AbstractController
     public function addConcert(Request $request): Response {
         $show = new ShowConcert();
         $form = $this->createForm(ConcertType::class, $show);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -61,10 +60,9 @@ class ConcertController extends AbstractController
      * @Route("/concert/edit/{id}", name="edit_concert")
      */
     public function editConcert(Request $request, ShowConcert $concert): Response {
-
         $form = $this->createForm(ConcertType::class, $concert);        
-
         $form->handleRequest($request);
+        
         if($form->isSubmited() && $form->isValid()) {
             $show = $form->getData();
 

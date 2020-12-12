@@ -28,7 +28,7 @@
         <th>{{ concert.band.name }}</th>
         <td>{{ concert.tourName }}</td>
         <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
-        <td><input type="button" class="btn btn-primary" value="Modifier"></td>
+        <td><a href="{{ path('edit_concert', {id: concert.id}) }}" class="btn btn-primary">Modifier</a>
         <td><input type="button" class="btn btn-danger" value="Supprimer"></td>
       </tr>
       {% endfor %}
