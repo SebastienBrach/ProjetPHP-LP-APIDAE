@@ -22,7 +22,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/concerts", name="concert")
+     * @Route("/concerts", name="liste_concert")
      */
     public function listeConcert(): Response {
 
@@ -44,6 +44,7 @@ class ConcertController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $show = $form->getData();
 
+            dump($show); die;
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($show);
             $entityManager->flush();
@@ -57,23 +58,27 @@ class ConcertController extends AbstractController
     }
 
 
-    // /**
-    //  * @Route("/concert/form", name="form")
-    //  */
-    // public function editConcert(Request $request, ShowConcert $concert): Response {
+    /**
+     * @Route("/concert/edit/{id}", name="edit_concert")
+     */
+    public function editConcert(Request $request, ShowConcert $concert): Response {
 
-    //     $form = $this->createForm(ConcertType::class, $concert);        
+        $form = $this->createForm(ConcertType::class, $concert);        
 
-    //     $form->handleRequest($request);
-    //     if($form->isSubmited() && $form->isValid()) {
-    //         $show = $form->getData();
+        $form->handleRequest($request);
+        if($form->isSubmited() && $form->isValid()) {
+            $show = $form->getData();
 
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($concert);
-    //         $entityManager->flush();
-    //     }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($concert);
+            $entityManager->flush();
 
+            $this->addFlash('success', 'Concert modifié !');
+            return $this->redirectToRoute('liste_concert');
+        }
 
-        
-    // }
+        return $this->render('concert/liste.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
