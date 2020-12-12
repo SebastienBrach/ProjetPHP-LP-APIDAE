@@ -22,7 +22,7 @@ class ConcertController extends AbstractController
      */
     public function listeConcert(): Response {
 
-        $repository = $this->getDoctrine()->getRepository(Concert::class);
+        $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
         $concerts = $repository->findAll();
         return $this->render('concert/liste.html.twig', [
             'concerts' => $concerts,
