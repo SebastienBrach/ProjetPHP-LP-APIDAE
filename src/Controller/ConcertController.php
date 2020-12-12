@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\ShowConcert;
 use App\Form\ConcertType;
 
@@ -35,6 +36,7 @@ class ConcertController extends AbstractController
 
     /**
      * @Route("/concert/form", name="add_concert")
+     * @isGranted("ROLE_ADMIN")
      */
     public function addConcert(Request $request): Response {
         $show = new ShowConcert();
@@ -58,6 +60,7 @@ class ConcertController extends AbstractController
 
     /**
      * @Route("/concert/edit/{id}", name="edit_concert")
+     * @isGranted("ROLE_ADMIN")
      */
     public function editConcert(Request $request, ShowConcert $concert): Response {
         $form = $this->createForm(ConcertType::class, $concert);        
@@ -81,6 +84,7 @@ class ConcertController extends AbstractController
 
     /**
      * @Route("/concert/delete/{id}", name="delete_concert")
+     * @isGranted("ROLE_ADMIN")
      */
     public function deleteConcert(Request $request, ShowConcert $concert): Response {
 
