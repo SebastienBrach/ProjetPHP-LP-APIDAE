@@ -34,7 +34,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/concert/form", name="form")
+     * @Route("/concert/form", name="add_concert")
      */
     public function addConcert(Request $request): Response {
         $show = new ShowConcert();
