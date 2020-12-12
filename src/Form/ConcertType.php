@@ -14,8 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
-
-
 class ConcertType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

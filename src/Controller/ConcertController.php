@@ -41,7 +41,7 @@ class ConcertController extends AbstractController
         $form = $this->createForm(ConcertType::class, $show);
 
         $form->handleRequest($request);
-        if($form->isSubmited() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
             $show = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
