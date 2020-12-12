@@ -41,10 +41,9 @@ class ConcertController extends AbstractController
         $form = $this->createForm(ConcertType::class, $show);
 
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()) {
             $show = $form->getData();
-
-            dump($show); die;
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($show);
             $entityManager->flush();
@@ -77,7 +76,7 @@ class ConcertController extends AbstractController
             return $this->redirectToRoute('liste_concert');
         }
 
-        return $this->render('concert/liste.html.twig', [
+        return $this->render('concert/formInsert.html.twig', [
             'form' => $form->createView(),
         ]);
     }

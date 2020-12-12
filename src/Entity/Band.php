@@ -50,8 +50,7 @@ class Band
     private $members;
 
     /**
-    //  * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
-     * @ORM\ManyToMany(targetEntity=ShowConcert::class, mappedBy="band")
+     * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
      */
     private $show_concerts;
 

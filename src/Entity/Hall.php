@@ -99,7 +99,7 @@ class Hall
         return $this->concert_halls;
     }
 
-    public function addConcertHall(concerthall $concertHall): self
+    public function addConcertHall(ConcertHall $concertHall): self
     {
         if (!$this->concert_halls->contains($concertHall)) {
             $this->concert_halls[] = $concertHall;
@@ -109,7 +109,7 @@ class Hall
         return $this;
     }
 
-    public function removeConcertHall(concerthall $concertHall): self
+    public function removeConcertHall(ConcertHall $concertHall): self
     {
         if ($this->concert_halls->removeElement($concertHall)) {
             // set the owning side to null (unless already changed)
@@ -129,7 +129,7 @@ class Hall
         return $this->show_concerts;
     }
 
-    public function addShowConcert(showconcert $showConcert): self
+    public function addShowConcert(ShowConcert $showConcert): self
     {
         if (!$this->show_concerts->contains($showConcert)) {
             $this->show_concerts[] = $showConcert;
@@ -139,7 +139,7 @@ class Hall
         return $this;
     }
 
-    public function removeShowConcert(showconcert $showConcert): self
+    public function removeShowConcert(ShowConcert $showConcert): self
     {
         if ($this->show_concerts->removeElement($showConcert)) {
             // set the owning side to null (unless already changed)
