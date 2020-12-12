@@ -92,7 +92,7 @@ class Hall
     }
 
     /**
-     * @return Collection|concerthall[]
+     * @return Collection|ConcertHall[]
      */
     public function getConcertHalls(): Collection
     {
@@ -122,7 +122,7 @@ class Hall
     }
 
     /**
-     * @return Collection|showconcert[]
+     * @return Collection|ShowConcert[]
      */
     public function getShowConcerts(): Collection
     {

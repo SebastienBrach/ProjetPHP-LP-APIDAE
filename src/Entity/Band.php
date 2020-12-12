@@ -50,7 +50,8 @@ class Band
     private $members;
 
     /**
-     * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
+    //  * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
+     * @ORM\ManyToMany(targetEntity=ShowConcert::class, mappedBy="band")
      */
     private $show_concerts;
 
@@ -126,14 +127,14 @@ class Band
     }
 
     /**
-     * @return Collection|member[]
+     * @return Collection|Member[]
      */
     public function getMembers(): Collection
     {
         return $this->members;
     }
 
-    public function addMember(member $member): self
+    public function addMember(Member $member): self
     {
         if (!$this->members->contains($member)) {
             $this->members[] = $member;
@@ -143,7 +144,7 @@ class Band
         return $this;
     }
 
-    public function removeMember(member $member): self
+    public function removeMember(Member $member): self
     {
         if ($this->members->removeElement($member)) {
             // set the owning side to null (unless already changed)
@@ -156,14 +157,14 @@ class Band
     }
 
     /**
-     * @return Collection|showconcert[]
+     * @return Collection|ShowConcert[]
      */
     public function getShowConcerts(): Collection
     {
         return $this->show_concerts;
     }
 
-    public function addShowConcert(showconcert $showConcert): self
+    public function addShowConcert(ShowConcert $showConcert): self
     {
         if (!$this->show_concerts->contains($showConcert)) {
             $this->show_concerts[] = $showConcert;
@@ -173,7 +174,7 @@ class Band
         return $this;
     }
 
-    public function removeShowConcert(showconcert $showConcert): self
+    public function removeShowConcert(ShowConcert $showConcert): self
     {
         if ($this->show_concerts->removeElement($showConcert)) {
             // set the owning side to null (unless already changed)
