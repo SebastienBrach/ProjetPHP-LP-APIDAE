@@ -11,14 +11,30 @@
 </div>
 
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-  {% for concert in concerts %} 
-  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    <div class="my-3 py-3">
-      <h2 class="display-5">{{  }}</h2>
-    </div>
-    <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+  <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Groupe</th>
+        <th scope="col">Tournée</th>
+        <th scope="col">Date</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for concert in concerts %} 
+      <tr>
+        <th>{{ concert.band.name }}</th>
+        <td>{{ concert.tourName }}</td>
+        <td>{{ concert.date.date|format_datetime() }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   </div>
-  {% endfor %}
 </div>
 
 
