@@ -91,6 +91,8 @@ class Hall
         return $this;
     }
 
+
+    // aucune collection normalement
     /**
      * @return Collection|ConcertHall[]
      */

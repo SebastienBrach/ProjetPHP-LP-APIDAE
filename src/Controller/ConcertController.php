@@ -47,7 +47,7 @@ class ConcertController extends AbstractController
             $entityManager->persist($show);
             $entityManager->flush();
 
-            return $this->redirectToRoute('concert_success');
+            return $this->redirectToRoute('liste_concert');
         }
 
         return $this->render('concert/formInsert.html.twig', [
@@ -62,7 +62,7 @@ class ConcertController extends AbstractController
     public function editConcert(Request $request, ShowConcert $concert): Response {
         $form = $this->createForm(ConcertType::class, $concert);        
         $form->handleRequest($request);
-        
+
         if($form->isSubmited() && $form->isValid()) {
             $show = $form->getData();
 

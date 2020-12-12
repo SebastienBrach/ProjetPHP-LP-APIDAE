@@ -52,6 +52,7 @@ class Band
     /**
      * @ORM\OneToMany(targetEntity=ShowConcert::class, mappedBy="band")
      */
+    // ManyToMany
     private $show_concerts;
 
     public function __construct()

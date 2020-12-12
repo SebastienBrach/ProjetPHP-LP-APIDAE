@@ -41,6 +41,7 @@ class ConcertHall
      * @ORM\ManyToOne(targetEntity=Hall::class, inversedBy="concert_halls")
      * @ORM\JoinColumn(nullable=false)
      */
+    // OneToMany
     private $hall;
 
     public function getId(): ?int

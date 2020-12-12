@@ -29,7 +29,6 @@ class ConcertType extends AbstractType
             ->add('band', EntityType::class, [
                 'class' => Band::class, 
                 'choice_label' => 'name', 
-                'multiple' => true
             ])
             ->add('hall', EntityType::class, [
                 'class' => Hall::class, 

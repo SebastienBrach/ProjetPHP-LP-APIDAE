@@ -31,12 +31,14 @@ class ShowConcert
      * @ORM\ManyToOne(targetEntity=Band::class, inversedBy="show_concerts")
      * @ORM\JoinColumn(nullable=false)
      */
+    // OneToOne
     private $band;
 
     /**
      * @ORM\ManyToOne(targetEntity=Hall::class, inversedBy="show_concerts")
      * @ORM\JoinColumn(nullable=false)
      */
+    //ManyToMany
     private $hall;
 
     public function getId(): ?int
@@ -91,4 +93,6 @@ class ShowConcert
 
         return $this;
     }
+
+    // collections dans le corrigé de la prof
 }
