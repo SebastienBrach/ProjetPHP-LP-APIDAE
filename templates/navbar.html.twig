@@ -8,10 +8,10 @@
         <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
         <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white; background-color: transparent;">
-                Bienvenue {{ app.user.firstName }}
+                Welcome {{ app.user.firstName }}
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/account">Mon compte</a>
+              <a class="dropdown-item" href="/account">My Account</a>
               <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </div>
@@ -21,11 +21,11 @@
         <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
         <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white; background-color: transparent;">
-                Compte
+                Account
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/login">Login</a>
-              <a class="dropdown-item" href="/register">Créer un compte</a>
+              <a class="dropdown-item" href="/register">Create account</a>
             </div>
         </div>
         {% endif %}
