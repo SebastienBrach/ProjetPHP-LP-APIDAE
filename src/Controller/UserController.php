@@ -20,4 +20,27 @@ class UserController extends AbstractController
             'accounts' => $account,
         ]);
     }
+
+    /**
+     * @Route("/account/edit/{id}", name="edit_account_user")
+     */
+    public function editAccount(Request $request, User $user): Response {
+        $form = $this->createForm(UserType::class, $user);        
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            $users = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Modification de votre compte réussi !');
+            return $this->redirectToRoute('account_user');
+        }
+
+        return $this->render('user/formEdit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
