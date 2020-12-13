@@ -6,8 +6,16 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
         <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
-        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block">Bienvenue {{ app.user.firstName }}</a>
-        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
+
+        <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white; background-color: transparent;">
+                Bienvenue {{ app.user.firstName }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Mon compte</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+        </div>
 
         {% else %}
         <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
