@@ -15,6 +15,7 @@ class ConcertController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @isGranted("ROLE_USER")
      */
     public function index(): Response {
         return $this->render('concert/index.html.twig', [
@@ -24,6 +25,7 @@ class ConcertController extends AbstractController
 
     /**
      * @Route("/concerts", name="liste_concert")
+     * @isGranted("ROLE_USER")
      */
     public function listeConcert(): Response {
 
