@@ -19,6 +19,9 @@
     <h1 class="display-4 font-weight-normal">Quels sont les prochains concerts à venir ?</h1>
 
     {% for concert in concerts %} 
+
+    <td>{{ dump(concert.date.date|date('Y')) }}</td>
+
       <tr>
         <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
         <td>{{ concert.tourName }}</td>
