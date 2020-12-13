@@ -17,7 +17,11 @@ class ConcertController extends AbstractController
      * @Route("/", name="home")
      */
     public function index(): Response {
-        return $this->render('concert/index.html.twig');
+        $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
+        $concerts = $repository->findAll();
+        return $this->render('concert/index.html.twig', [
+            'concerts' => $concerts,
+        ]);
     }
 
     /**
