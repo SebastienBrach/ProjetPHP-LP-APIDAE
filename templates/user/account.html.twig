@@ -9,36 +9,13 @@
   </div>
 </div>
 
-
-<!-- 
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">E-mail</th>  
-        </tr>
-      </thead>
-      <tbody>
-        {% for account in accounts %} 
-        <tr>
-          <th>{{ account.firstName }}</a></th>
-          <th>{{ account.lastName }}</a></th>
-          <th>{{ account.email }}</a></th>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-    <div class="text-center">
-        <a href="/user/form" class="btn btn-primary">Modifier</a>
+{% for message in app.flashes('success') %}
+  <div class="container text-center">
+    <div class="alert alert-success">
+        {{ message }}
     </div>
-
-    </div>
-</div> -->
-
+  </div>
+{% endfor %}
 
 <div class="container emp-profile">
     <div class="row justify-content-center align-items-center h-100">
@@ -81,11 +58,12 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
 
         <div class="text-center">
-            <a href="" class="btn btn-primary">Modifier</a>
+            <a href="{{ path('edit_account_user', {id: account.id}) }}" class="btn btn-primary">Modifier</a>
         </div>
+        {% endfor %}
+
 
     </div>
 </div>
