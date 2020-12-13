@@ -14,7 +14,6 @@ class BandController extends AbstractController
 {
     /**
      * @Route("/bands", name="band_list")
-     * @isGranted("ROLE_USER")
      */
     public function bandsAll(): Response {
         $repository = $this->getDoctrine()->getRepository(Band::class);
@@ -26,7 +25,6 @@ class BandController extends AbstractController
 
     /**
      * @Route("/band/{id}", name="band_show")
-     * @isGranted("ROLE_USER")
      */
     public function list(int $id): Response {
         $repository = $this->getDoctrine()->getRepository(Band::class);

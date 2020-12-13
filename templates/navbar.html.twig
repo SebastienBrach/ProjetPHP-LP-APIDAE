@@ -3,8 +3,19 @@
         <a class="py-2" href="/">
             <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
         </a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
+        <a class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
+        <a class="py-2 d-none d-md-inline-block">Bienvenue {{ app.user.firstName }}</a>
+        <a class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
+
+        {% else %}
         <a class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
         <a class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
         <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+
+        {% endif %}
+
+
     </div>
 </nav>
