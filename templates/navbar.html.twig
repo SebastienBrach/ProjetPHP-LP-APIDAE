@@ -1,18 +1,20 @@
-<nav class="site-header sticky-top ">
+<nav class="navbar navbar-expand-lg sticky-top bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="/">
             <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
         </a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
-        <a class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
-        <a class="py-2 d-none d-md-inline-block">Bienvenue {{ app.user.firstName }}</a>
-        <a class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block">Bienvenue {{ app.user.firstName }}</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
 
         {% else %}
-        <a class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
-        <a class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
-        <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/concerts">Concerts</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/bands">Bands</a>
+        <a style="color: white; text-decoration:none;" class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+
+        <
 
         {% endif %}
 
