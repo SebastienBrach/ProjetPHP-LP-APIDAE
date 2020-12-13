@@ -17,7 +17,7 @@ class UserController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(User::class);
         $account = $repository->findAll();
         return $this->render('user/account.html.twig', [
-            'account' => $account,
+            'accounts' => $account,
         ]);
     }
 }
