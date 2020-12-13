@@ -18,6 +18,17 @@
   <div class="col-md-5 p-lg-5 mx-auto my-5">
     <h1 class="display-4 font-weight-normal">Quels sont les prochains concerts à venir ?</h1>
 
+    {% for concert in concerts %} 
+      <tr>
+        <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
+        <td>{{ concert.tourName }}</td>
+        <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
+        {% if is_granted('ROLE_ADMIN') %}
+        <td><a href="{{ path('edit_concert', {id: concert.id}) }}" class="btn btn-primary">Modifier</a></td>
+        <td><a href="{{ path('delete_concert', {id: concert.id}) }}" class="btn btn-danger">Supprimer</a></td>
+        {% endif %}
+      </tr>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
