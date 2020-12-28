@@ -15,7 +15,7 @@ TP réalisé en LP APIDAE à Montpellier - Site répertoriant des concerts basé
     - CRUD membres avec accès aux formulaires de création / update ❌
 - Gestion des accès : un utilisateur n’a pas accès à tout le site, l’administrateur oui ✔️
 - Créer un footer qui affiche l’adresse de la salle de concert ✔️❌
-    - Modif de la consigne, afficher salle de concert sur la ligne des concerts (tjrs a mtp, on ne peut pas la changer dans même en modifiant (j'aurais effectivement pu rajouter le fait de changer l'adresse, mais il ne m'a pas sembler que cela soit intéressant))
+    - Modif de la consigne, afficher salle de concert sur la ligne des concerts (tjrs a mtp, on ne peut pas la changer dans même en modifiant)
 - Fixtures qui permet de remplir la BDD de façon automatique ✔️
 - Quand je clique sur le nom d’un groupe, j’ai la liste de ses membres, mais également une section : « leurs prochains concerts » ✔️
 
