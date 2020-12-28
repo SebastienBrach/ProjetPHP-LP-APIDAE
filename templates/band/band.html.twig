@@ -38,11 +38,15 @@
                 </thead>
                 <tbody>
                     {% for concert in concerts %}
-                        {% if(concert.band.id == 1) %}
-                            <tr>
-                                <td>{{concert.date.date|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title}}</td>
-                                <td>{{concert.tourName}}</td>
-                            </tr>
+                    <!-- pour avoir l'id du groupe via l'url -->
+                        {% if(concert.band.id == app.request.requesturi|split('/')[2]) %}      
+                         <!-- pour savoir si le concert est passé ou pas -->
+                            {% if(concert.date.date|date('Y-m-d') > "now"|date('Y-m-d')) %} 
+                                <tr>
+                                    <td>{{concert.date.date|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title}}</td>
+                                    <td>{{concert.tourName}}</td>
+                                </tr>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </tbody>
