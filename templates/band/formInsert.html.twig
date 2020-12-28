@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concert-Project!{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-3 mx-auto my-3">
+        {% if app.request.uri|slice(-1) matches '/^[-+]?[0-9]*\\.?[0-9]+$/' %}
+        <h1 class="display-4 font-weight-normal">Modification du groupe</h1>
+        {% else %}
+        <h1 class="display-4 font-weight-normal">Ajout d'un groupe</h1>
+        {% endif %}
+        <p class="lead font-weight-normal"><i>Yeah Dude</i></p>
+    </div>
+</div>
+
+<div class="container">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </div>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}

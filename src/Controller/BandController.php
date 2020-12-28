@@ -5,9 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Band;
 use App\Entity\ShowConcert;
+use App\Form\BandType;
+
 
 class BandController extends AbstractController
 {
@@ -38,5 +41,30 @@ class BandController extends AbstractController
                 'concerts' => $concerts
             ]
         );
+    }
+
+
+    /**
+     * @Route("/bands/form", name="add_band")
+     * @isGranted("ROLE_ADMIN")
+     */
+    public function addBand(Request $request): Response {
+        $show = new Band();
+        $form = $this->createForm(BandType::class, $show);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $show = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($show);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Groupe ajouté avec succés !');
+            return $this->redirectToRoute('band_list');
+        }   
+
+        return $this->render('band/formInsert.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

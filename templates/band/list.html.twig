@@ -8,6 +8,13 @@
     </div>
 </div>
 
+{% for message in app.flashes('success') %}
+  <div class="container text-center">
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+  </div>
+{% endfor %}
 
 
 <div class="container">
@@ -29,4 +36,12 @@
         {% endfor %}
     </div>
 </div>
+<br><br>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="text-center">
+        <a href="/bands/form" class="btn btn-primary">Créer un nouveau groupe</a>
+    </div>
+{% endif %}
+
 {% endblock %} 
