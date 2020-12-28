@@ -49,14 +49,27 @@ class BandController extends AbstractController
      * @isGranted("ROLE_ADMIN")
      */
     public function addBand(Request $request): Response {
-        $show = new Band();
-        $form = $this->createForm(BandType::class, $show);
+        $band = new Band();
+        $form = $this->createForm(BandType::class, $band);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $show = $form->getData();
+            // $photo = $form->get('picture')->getData();
+            // if ($photo) {
+            //     $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            //     $safeFilename = $slugger->slug($originalFilename);
+            //     $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
+            //     try {
+            //         $photo->move($this->getParameter('images/'), $newFilename);
+            //     } catch (FileException $e) {
+            //         // ... handle exception if something happens during file upload
+            //     }
+            //     $product->setPicture($newFilename);
+            // }
+
+            $band = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($show);
+            $entityManager->persist($band);
             $entityManager->flush();
 
             $this->addFlash('success', 'Groupe ajouté avec succés !');
@@ -78,7 +91,7 @@ class BandController extends AbstractController
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()) {
-            $show = $form->getData();
+            $band = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($concert);

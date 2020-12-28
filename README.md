@@ -14,7 +14,6 @@ truc bizarre dans le repository bandController A VOIR
 
 Attendus :
 - Administrateur :
-    CRUD groupe avec accès aux formulaires de création / update
     CRUD membres avec accès aux formulaires de création / update
 
 Nice to have
