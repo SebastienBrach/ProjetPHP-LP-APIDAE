@@ -30,7 +30,9 @@ class BandController extends AbstractController
         $membres = $repository->find($id);
 
         $repository2 = $this->getDoctrine()->getRepository(ShowConcert::class);
-        $concerts = $repository2->find($id);
+        $concerts = $repository2->findOneBy(['band' => $id]);
+
+        var_dump($concerts);
 
         return $this->render('band/band.html.twig', [
                 'band' => $membres,

@@ -34,20 +34,14 @@
                     <tr>
                         <th scope="col">Date</th>
                         <th scope="col">Tournée</th>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <th scope="col">Modifier</th>
-                            <th scope="col">Supprimer</th>
-                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
                     {% for concert in concerts %}
-                    {{dump(concert)}}
+                    {{ dump(concert) }}
                         <tr>
                             <td></td>
                             <td></td>
-                            {% if is_granted('ROLE_ADMIN') %}
-                            {% endif %}
                         </tr>
                     {% endfor %}
 
