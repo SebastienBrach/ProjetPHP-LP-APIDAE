@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 12 déc. 2020 à 16:58
+-- Généré le :  lun. 28 déc. 2020 à 10:33
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `band` (
   `year_of_creation` date NOT NULL,
   `last_album_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `band`
@@ -70,6 +70,29 @@ CREATE TABLE IF NOT EXISTS `concert_hall` (
 
 INSERT INTO `concert_hall` (`id`, `name`, `total_places`, `presentation`, `city`, `hall_id`) VALUES
 (1, 'concert_hall1', 1600, 'Présentation de concert_hall', 'Montpellier', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+DROP TABLE IF EXISTS `doctrine_migration_versions`;
+CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20201212171008', '2020-12-12 17:10:24', 129),
+('DoctrineMigrations\\Version20201212171948', '2020-12-12 17:19:55', 142),
+('DoctrineMigrations\\Version20201213151545', '2020-12-13 15:15:51', 79);
 
 -- --------------------------------------------------------
 
@@ -138,14 +161,41 @@ CREATE TABLE IF NOT EXISTS `show_concert` (
   PRIMARY KEY (`id`),
   KEY `IDX_B22E2F3149ABEB17` (`band_id`),
   KEY `IDX_B22E2F3152AFCFD6` (`hall_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `show_concert`
 --
 
 INSERT INTO `show_concert` (`id`, `date`, `tour_name`, `band_id`, `hall_id`) VALUES
-(1, '2022-01-26', 'ZeppTour', 1, 1);
+(11, '2023-11-17', 'ZeppTour', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` json NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`),
+  UNIQUE KEY `UNIQ_8D93D649A9D1C132` (`first_name`),
+  UNIQUE KEY `UNIQ_8D93D649C808BA5A` (`last_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `roles`, `password`, `first_name`, `last_name`) VALUES
+(4, 'seb@emity.io', '[]', '$argon2i$v=19$m=65536,t=4,p=1$UTkveDFIbzdIeGtkU0tjSQ$lB3gM7LEsAwx7zxKUMNwUC0+7RnLpx89/cbfjnhqFxQ', 'Sébastien', 'BRACH');
 
 --
 -- Contraintes pour les tables déchargées
