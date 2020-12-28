@@ -18,7 +18,6 @@ Attendus :
 - Quand je clique sur le nom d’un groupe, j’ai la liste de ses membres, mais également une section : « leurs prochains concerts ».
 
 
-
 Nice to have
 - Une page qui affiche les concerts passés, classé par année, avec un onglet NavBar dédié.
 - Upload d’images
