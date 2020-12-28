@@ -17,7 +17,7 @@
                 <h4 class="card-title">{{ member.name }} {{ member.firstname }}</h4>
                 <p class="card-text"><b>{{ member.job }}</b></p>
             </div>
-            <div class="card-footer"><small class="text-muted">Né le {{ member.birthDate|date('d-m-Y') }}</small>
+            <div class="card-footer"><small class="text-muted">Né le {{ member.birthDate|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title }}</small>
             </div>
         </div>
     {% endfor %}
@@ -38,11 +38,12 @@
                 </thead>
                 <tbody>
                     {% for concert in concerts %}
-                    {{dump(concert)}}
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        {% if(concert.band.id == 1) %}
+                            <tr>
+                                <td>{{concert.date.date|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title}}</td>
+                                <td>{{concert.tourName}}</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

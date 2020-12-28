@@ -28,7 +28,7 @@
             <tr>
               <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
             <td>{{ concert.tourName }}</td>
-            <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
+            <td>{{ concert.date.date|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title }}</td>
             </tr>
             {% endif %}
           {% endfor %}
