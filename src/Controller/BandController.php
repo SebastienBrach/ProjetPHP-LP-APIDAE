@@ -28,9 +28,10 @@ class BandController extends AbstractController
     public function list(int $id): Response {
         $repository = $this->getDoctrine()->getRepository(Band::class);
         $membres = $repository->find($id);
-        
+
         $repository2 = $this->getDoctrine()->getRepository(ShowConcert::class);
-        $concerts = $repository2->findOneBy(['band' => $id]);
+        // $concerts = $repository2->findOneBy(['band' => $id]);  // ne fonctionne pas (err : out of memory (je dois load bcp de data mais je ne vois pas pourquoi))
+        $concerts = $repository2->findAll();
 
         return $this->render('band/band.html.twig', [
                 'band' => $membres,

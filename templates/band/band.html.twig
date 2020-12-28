@@ -38,12 +38,12 @@
                 </thead>
                 <tbody>
                     {% for concert in concerts %}
+                    {{dump(concert)}}
                         <tr>
-                            <td>{{ concert.tourName }}</td>
+                            <td></td>
                             <td></td>
                         </tr>
                     {% endfor %}
-
                 </tbody>
             </table>
         </div>
