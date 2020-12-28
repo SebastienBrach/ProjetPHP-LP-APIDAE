@@ -9,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class BandType extends AbstractType
 {
@@ -25,11 +24,11 @@ class BandType extends AbstractType
             ->add('picture', TextType::class, [
                 'label' => 'Nom de la photo'
             ])
-            ->add('year_of_creation', DateType::class,  [
-                'widget' => 'choice', 
-                'format' =>'d/M/y',
-                'label' => 'Date de création du groupe'
-            ])
+            ->add('year_of_creation',DateType::Class, array(
+                  'widget' => 'choice',
+                  'format' =>'dd/MM/yyyy',
+                  'years' => range(date('Y')-70, date('Y')+2),
+            ))
             ->add('last_album_name', TextType::class, [
                 'label' => 'Nom du dernier album'
             ])

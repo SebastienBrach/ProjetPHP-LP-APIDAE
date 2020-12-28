@@ -67,4 +67,42 @@ class BandController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/bands/edit/{id}", name="edit_band")
+     * @isGranted("ROLE_ADMIN")
+     */
+    public function editConcert(Request $request, Band $concert): Response {
+        $form = $this->createForm(BandType::class, $concert);        
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            $show = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($concert);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Groupe modifié !');
+            return $this->redirectToRoute('band_list');
+        }
+
+        return $this->render('band/formInsert.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/bands/delete/{id}", name="delete_band")
+     * @isGranted("ROLE_ADMIN")
+     */
+    public function deleteConcert(Request $request, Band $concert): Response {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($concert);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Groupe supprimé !');
+        return $this->redirectToRoute('band_list');
+    }
 }
