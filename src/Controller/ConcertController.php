@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\ShowConcert;
+use App\Entity\ConcertHall;
 use App\Form\ConcertType;
 
 
@@ -31,9 +32,14 @@ class ConcertController extends AbstractController
 
         $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
         $concerts = $repository->findAll();
+
+        $repository2 = $this->getDoctrine()->getRepository(ConcertHall::class);
+        $salles = $repository2->findAll();
+
         return $this->render('concert/liste.html.twig', [
-            'concerts' => $concerts,
-        ]);
+                'concerts' => $concerts,
+                'salles' => $salles,
+            ]);
     }
 
     /**

@@ -21,40 +21,43 @@
 
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
   <div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Groupe</th>
-        <th scope="col">Tournée</th>
-        <th scope="col">Date</th>
-        {% if is_granted('ROLE_ADMIN') %}
-        <th scope="col">Modifier</th>
-        <th scope="col">Supprimer</th>
-        {% endif %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Groupe</th>
+          <th scope="col">Tournée</th>
+          <th scope="col">Date</th>
+          <th scope="col">Adresse</th>
+          {% if is_granted('ROLE_ADMIN') %}
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for concert in concerts %} 
+          <tr>
+            <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
+            <td>{{ concert.tourName }}</td>
+            <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
+            {% for salle in salles %} 
+              <td>{{ salle.city }}</td>
+            {% endfor %}
 
-      </tr>
-    </thead>
-    <tbody>
-      {% for concert in concerts %} 
-      <tr>
-        <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
-        <td>{{ concert.tourName }}</td>
-        <td>{{ concert.date.date|format_datetime('short', 'none', locale='fr') }}</td>
-        {% if is_granted('ROLE_ADMIN') %}
-        <td><a href="{{ path('edit_concert', {id: concert.id}) }}" class="btn btn-primary">Modifier</a></td>
-        <td><a href="{{ path('delete_concert', {id: concert.id}) }}" class="btn btn-danger">Supprimer</a></td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+            {% if is_granted('ROLE_ADMIN') %}
+              <td><a href="{{ path('edit_concert', {id: concert.id}) }}" class="btn btn-primary">Modifier</a></td>
+              <td><a href="{{ path('delete_concert', {id: concert.id}) }}" class="btn btn-danger">Supprimer</a></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-  {% if is_granted('ROLE_ADMIN') %}
-  <div class="text-center">
-    <a href="/concert/form" class="btn btn-primary">Créer un nouveau concert</a>
-  </div>.
-  {% endif %}
-
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="text-center">
+      <a href="/concert/form" class="btn btn-primary">Créer un nouveau concert</a>
+    </div>.
+    {% endif %}
 
   </div>
 </div>
