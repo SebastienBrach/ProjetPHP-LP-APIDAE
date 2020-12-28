@@ -38,9 +38,8 @@
                 </thead>
                 <tbody>
                     {% for concert in concerts %}
-                    {{ dump(concert) }}
                         <tr>
-                            <td></td>
+                            <td>{{ concert.tourName }}</td>
                             <td></td>
                         </tr>
                     {% endfor %}

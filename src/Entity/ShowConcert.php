@@ -94,5 +94,5 @@ class ShowConcert
         return $this;
     }
 
-    // collections dans le corrigé de la prof
+    // collections sur github
 }
