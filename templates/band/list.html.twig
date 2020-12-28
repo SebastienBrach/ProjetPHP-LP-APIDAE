@@ -14,7 +14,7 @@
     <div class="card-deck">
         {% for band in bands %}
         <div class="card">
-            <img class="card-img-top" src="{{ asset('images/'~ band.picture) }}" alt="Card image for band">
+            <img class="card-img-top" src="{{ asset('images/'~ band.picture) }}">
         <div class="card-body">
             <h5 class="card-title text-center"><a href="{{ path('band_show', {id: band.id}) }}">{{ band.name }}</a></h5>
         </div>
