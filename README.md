@@ -25,8 +25,8 @@ Nice to have
 
 
 
-
-# Attendus dans le travail à rendre 
+# Travail à rendre
+### Attendus dans le travail à rendre 
 - User :
     - accès en lecture aux concerts ✔️
     - accès à la création d’un compte ✔️
@@ -42,7 +42,7 @@ Nice to have
 - Quand je clique sur le nom d’un groupe, j’ai la liste de ses membres, mais également une section : « leurs prochains concerts » ✔️
 
 
-## Nice to have
+### Nice to have
 - Quand l’utilisateur est logué, au lieu de « Login », s’affiche dans la navBar : « Bonjour [nomUserLogué] » ✔️
 - Une page qui affiche les concerts passés, classé par année, avec un onglet NavBar dédié ✔️
 - Upload d’images ✔️
