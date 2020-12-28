@@ -22,31 +22,35 @@
         </div>
     {% endfor %}
     </div>
-    <br><br>
+    <br><br>    <br><br>
+
         <div class="container">
             <center>
-            <h1>Bienvenue sur CP</h1>
+                <h1>Leurs prochains concerts</h1>
             </center>
+            <br>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Test</th>
-                        <th>Test</th>
-                        <th>Test</th>
-                        <th>Test</th>
-                        <th>Test</th>
-
+                        <th scope="col">Date</th>
+                        <th scope="col">Tournée</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th scope="col">Modifier</th>
+                            <th scope="col">Supprimer</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>The table body</td>
-                        <td>The table body</td>
-                        <td>The table body</td>
-                        <td>The table body</td>
+                    {% for concert in concerts %}
+                    {{dump(concert)}}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
 
-                        <td>with two columns</td>
-                    </tr>
                 </tbody>
             </table>
         </div>

@@ -6,9 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
 use App\Entity\Band;
-
+use App\Entity\ShowConcert;
 
 class BandController extends AbstractController
 {
@@ -28,9 +27,14 @@ class BandController extends AbstractController
      */
     public function list(int $id): Response {
         $repository = $this->getDoctrine()->getRepository(Band::class);
+        $membres = $repository->find($id);
+
+        $repository2 = $this->getDoctrine()->getRepository(ShowConcert::class);
+        $concerts = $repository2->find($id);
 
         return $this->render('band/band.html.twig', [
-                'band' => $repository->find($id)
+                'band' => $membres,
+                'concerts' => $concerts
             ]
         );
     }
