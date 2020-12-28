@@ -11,12 +11,11 @@ Modif de la consigne, afficher salle de concert sur la ligne des concerts (tjrs 
 
 
 Attendus :
+- Quand je clique sur le nom d’un groupe, j’ai la liste de ses membres, mais également une section : « leurs prochains concerts ».
+
 - Administrateur :
     CRUD groupe avec accès aux formulaires de création / update
     CRUD membres avec accès aux formulaires de création / update
-
-- Quand je clique sur le nom d’un groupe, j’ai la liste de ses membres, mais également une section : « leurs prochains concerts ».
-
 
 Nice to have
 - Une page qui affiche les concerts passés, classé par année, avec un onglet NavBar dédié.
