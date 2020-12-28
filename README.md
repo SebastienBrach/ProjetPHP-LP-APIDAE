@@ -2,7 +2,7 @@
 
 TP réalisé en Licence Pro APIDAE à Montpellier
 
-# Travail à rendre
+## Travail à rendre
 ### Attendus dans le travail à rendre 
 - User :
     - accès en lecture aux concerts ✔️
@@ -27,6 +27,7 @@ TP réalisé en Licence Pro APIDAE à Montpellier
 
 
 
+## Les problèmes
 
 - Site de concert basé sur Montpellier (Comédie)
 
