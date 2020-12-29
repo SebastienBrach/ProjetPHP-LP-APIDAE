@@ -7,16 +7,34 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
+
+
 class MemberType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('first_name')
-            ->add('job')
-            ->add('birth_date')
-            ->add('picture')
+            ->add('name', TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('first_name', TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('job', TextType::class, [
+                'label' => 'Job'
+            ])
+            ->add('birth_date',DateType::Class, array(
+                'widget' => 'choice',
+                'label' => 'Date de naissance',
+                'format' =>'dd/MM/yyyy',
+                'years' => range(date('Y')-70, date('Y')+2),
+            ))
+            ->add('picture', TextType::class, [
+                'label' => 'Nom de la photo'
+            ])
             ->add('band')
         ;
     }
