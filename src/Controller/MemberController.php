@@ -11,14 +11,10 @@ use App\Entity\Member;
 use App\Entity\Band;
 use App\Form\MemberType;
 
-
-
-
 class MemberController extends AbstractController
 {
-
     /**
-     * @Route("/member/form/{id}", name="add_member")
+     * @Route("/member/form/", name="add_member")
      * @isGranted("ROLE_ADMIN")
      */
     public function addMember(Request $request): Response {
@@ -66,7 +62,7 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/bands/delete/{id}", name="delete_member")
+     * @Route("/member/delete/{id}", name="delete_member")
      * @isGranted("ROLE_ADMIN")
      */
     public function deleteMember(Request $request, Member $member): Response {

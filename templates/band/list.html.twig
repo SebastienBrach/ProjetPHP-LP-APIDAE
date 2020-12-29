@@ -29,7 +29,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('edit_band', {id: band.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('delete_band', {id: band.id}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path('add_member', {id: band.id}) }}" class="btn btn-success">Ajouter Membres</a>
+                            <!-- <a href="{{ path('add_member', {id: band.id}) }}" class="btn btn-success">Ajouter Membres</a> -->
                         {% endif %}
                     </center>
                 </div>
@@ -41,6 +41,9 @@
 {% if is_granted('ROLE_ADMIN') %}
     <div class="text-center">
         <a href="/bands/form" class="btn btn-primary">Créer un nouveau groupe</a>
+    </div>
+    <div class="text-center">
+        <a href="{{ path('add_member') }}" class="btn btn-success">Ajouter des membres dans un groupe</a>
     </div>
 {% endif %}
 </div>

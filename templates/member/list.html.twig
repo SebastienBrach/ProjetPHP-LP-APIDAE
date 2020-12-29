@@ -16,6 +16,10 @@
             <div class="card-body">
                 <h4 class="card-title">{{ member.name }} {{ member.firstname }}</h4>
                 <p class="card-text"><b>{{ member.job }}</b></p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <p><a href="{{ path('edit_member', {id: member.id}) }}" class="btn btn-primary">Modifier</a></p>
+                    <p><a href="{{ path('delete_member', {id: member.id}) }}" class="btn btn-danger">Supprimer</a></p>
+                {% endif %}
             </div>
             <div class="card-footer"><small class="text-muted">Né le {{ member.birthDate|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title }}</small>
             </div>
