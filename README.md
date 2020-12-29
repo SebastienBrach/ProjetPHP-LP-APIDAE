@@ -25,9 +25,7 @@ TP réalisé en LP APIDAE à Montpellier - Site répertoriant des concerts basé
 - Une page qui affiche les concerts passés, classé par année, avec un onglet NavBar dédié ❌
 - Upload d’images ❌
 
-![tanti](https://user-images.githubusercontent.com/55393279/103274457-00277100-49c2-11eb-9dcb-6eda3c42e831.jpg)
-
-## Les problèmes (RPZ Juju Tanti)
+## ![tanti](https://user-images.githubusercontent.com/55393279/103274457-00277100-49c2-11eb-9dcb-6eda3c42e831.jpg)
 - Pour être admin, il faut changer le role dans l'entité User (getRoles())
 - Soucis lorsque l'on se log (je ne comprends pas l'erreur), il faut rafraichir la page lors de l'affichage de l'erreur pour se connecter
 - truc bizarre dans le repository bandController A VOIR
