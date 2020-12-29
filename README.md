@@ -26,6 +26,8 @@ TP réalisé en LP APIDAE à Montpellier - Site répertoriant des concerts basé
     - voir code
 
 ## ![tanti](https://user-images.githubusercontent.com/55393279/103274457-00277100-49c2-11eb-9dcb-6eda3c42e831.jpg)
-- Pour être admin, il faut changer le role dans l'entité User (getRoles() : mettre ROLE_ADMIN ou ROLE_USER). Je n'ai pas réussi à attribuer plusieurs rôles à un utilisateur
-- Soucis lorsque l'on se log (je ne comprends pas l'erreur), il faut rafraichir la page lors de l'affichage de l'erreur pour se connecter
-- truc bizarre dans le repository bandController A VOIR
+- Pour être admin, il faut changer le role dans l'entité User (getRoles()). Je n'ai pas réussi à attribuer plusieurs rôles à un utilisateur
+- Soucis lorsqu'on se log (je ne comprends pas l'erreur). Il faut râfraichir la page lors de l'affichage de l'erreur pour se connecter
+- Je ne comprends pas pourquoi le findOneBy() (en commentaire) dans BandController::list() me load bcp de data, ce qui amène à l'erreur : out of memory
+
+Sinon j'aime bien ce framework 
