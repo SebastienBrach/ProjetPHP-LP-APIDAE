@@ -24,11 +24,14 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">
                         <a href="{{ path('band_show', {id: band.id}) }}">{{ band.name }}</a>
+                    </h5>
+                    <center>
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('edit_band', {id: band.id}) }}" class="btn btn-primary">Modifier</a>
                             <a href="{{ path('delete_band', {id: band.id}) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('add_member', {id: band.id}) }}" class="btn btn-success">Ajouter Membres</a>
                         {% endif %}
-                    </h5>
+                    </center>
                 </div>
             </div>
             {% endfor %}
