@@ -36,7 +36,7 @@ class MemberController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+    
     /**
      * @Route("/member/edit/{id}", name="edit_member")
      * @isGranted("ROLE_ADMIN")
