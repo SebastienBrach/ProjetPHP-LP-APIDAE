@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Member;
+use App\Entity\Band;
 use App\Form\MemberType;
 
 
@@ -21,14 +22,14 @@ class MemberController extends AbstractController
      * @isGranted("ROLE_ADMIN")
      */
     public function addMember(Request $request): Response {
-        $band = new Member();
-        $form = $this->createForm(MemberType::class, $band);
+        $member = new Member();
+        $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $band = $form->getData();
+            $member = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($band);
+            $entityManager->persist($member);
             $entityManager->flush();
 
             $this->addFlash('success', 'Membre ajouté avec succés !');
@@ -39,7 +40,6 @@ class MemberController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/member/edit/{id}", name="edit_member")
