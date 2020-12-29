@@ -23,7 +23,7 @@ TP réalisé en LP APIDAE à Montpellier - Site répertoriant des concerts basé
 ### Nice to have
 - Quand l’utilisateur est logué, au lieu de « Login », s’affiche dans la navBar : « Bonjour [nomUserLogué] » ✔️
 - Upload d’images ❌✔️
-    - voir code
+    - non fonctionnel mais voir code
 
 ## ![tanti](https://user-images.githubusercontent.com/55393279/103274457-00277100-49c2-11eb-9dcb-6eda3c42e831.jpg)
 - Pour être admin, il faut changer le role dans l'entité User (getRoles()). Je n'ai pas réussi à attribuer plusieurs rôles à un utilisateur
