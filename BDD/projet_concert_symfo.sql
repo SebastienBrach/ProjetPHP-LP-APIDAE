@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 28 déc. 2020 à 10:33
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.5
+-- Généré le : mar. 29 déc. 2020 à 10:50
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `projet_concert_symfo`
+-- Base de données : `projet_concert_symfo`
 --
 
 -- --------------------------------------------------------
@@ -37,14 +36,15 @@ CREATE TABLE IF NOT EXISTS `band` (
   `year_of_creation` date NOT NULL,
   `last_album_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `band`
 --
 
 INSERT INTO `band` (`id`, `name`, `style`, `picture`, `year_of_creation`, `last_album_name`) VALUES
-(1, 'Led Zeppelin', 'Rock', 'led-zeppelin.jpg', '1968-12-11', 'Coda');
+(1, 'Led Zeppelin', 'Rock', 'led-zeppelin.jpg', '1968-12-11', 'Coda'),
+(9, 'Slipknot', 'Métal', 'slipknot.jpg', '1995-01-01', 'We Are Not Your Kind');
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `concert_hall` (
 --
 
 INSERT INTO `concert_hall` (`id`, `name`, `total_places`, `presentation`, `city`, `hall_id`) VALUES
-(1, 'concert_hall1', 1600, 'Présentation de concert_hall', 'Montpellier', 1);
+(1, 'Salle1', 1500, 'Présentation de Salle1', 'Montpellier - Comédie', 1);
 
 -- --------------------------------------------------------
 
@@ -133,14 +133,14 @@ CREATE TABLE IF NOT EXISTS `member` (
   `band_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_70E4FA7849ABEB17` (`band_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `member`
 --
 
 INSERT INTO `member` (`id`, `name`, `first_name`, `job`, `birth_date`, `picture`, `band_id`) VALUES
-(1, 'Jimmy', 'Page', 'Guitariste', '1944-01-09', 'jimmy-page.jpg', 1),
+(1, 'Jimmy', 'Page', 'Guitariste', '2015-01-09', 'jimmy-page.jpg', 1),
 (2, 'John', 'Bonham', 'Batteur', '1948-05-31', 'john-bonham.jpg', 1),
 (3, 'John Paul', 'Jones', 'Guitariste', '1946-01-03', 'john-paul-jones.jpg', 1),
 (4, 'Robert', 'Plant', 'Chanteur', '1948-08-10', 'robert-plant.jpg', 1);
@@ -161,14 +161,15 @@ CREATE TABLE IF NOT EXISTS `show_concert` (
   PRIMARY KEY (`id`),
   KEY `IDX_B22E2F3149ABEB17` (`band_id`),
   KEY `IDX_B22E2F3152AFCFD6` (`hall_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `show_concert`
 --
 
 INSERT INTO `show_concert` (`id`, `date`, `tour_name`, `band_id`, `hall_id`) VALUES
-(11, '2023-11-17', 'ZeppTour', 1, 1);
+(19, '2022-01-06', 'Tournée 2022', 1, 1),
+(21, '2023-08-05', 'Slipknot Tour 2023', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -189,13 +190,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649A9D1C132` (`first_name`),
   UNIQUE KEY `UNIQ_8D93D649C808BA5A` (`last_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id`, `email`, `roles`, `password`, `first_name`, `last_name`) VALUES
-(4, 'seb@emity.io', '[]', '$argon2i$v=19$m=65536,t=4,p=1$UTkveDFIbzdIeGtkU0tjSQ$lB3gM7LEsAwx7zxKUMNwUC0+7RnLpx89/cbfjnhqFxQ', 'Sébastien', 'BRACH');
 
 --
 -- Contraintes pour les tables déchargées
