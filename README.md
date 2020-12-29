@@ -25,6 +25,7 @@ TP réalisé en LP APIDAE à Montpellier - Site répertoriant des concerts basé
 - Une page qui affiche les concerts passés, classé par année, avec un onglet NavBar dédié ❌
 - Upload d’images ❌
 
+![alt text](https://github.com/SebastienBrach/projetConcertSymfony/blob/feature/checklist/tanti.jpg?raw=true)
 
 ## Les problèmes (RPZ Juju Tanti)
 - Pour être admin, il faut changer le role dans l'entité User (getRoles())
