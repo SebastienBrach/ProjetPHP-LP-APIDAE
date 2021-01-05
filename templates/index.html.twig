@@ -23,14 +23,11 @@
       <table class="table">
         <tbody>
           {% for concert in concerts %} 
-            {% if(concert.date.date|date('Y-m-d') > "now"|date('Y-m-d')) %} 
-
             <tr>
               <th><a href="/band/{{ concert.band.id }}">{{ concert.band.name }}</a></th>
             <td>{{ concert.tourName }}</td>
             <td>{{ concert.date.date|format_datetime(locale='fr',pattern="dd MMMM YYYY")|title }}</td>
             </tr>
-            {% endif %}
           {% endfor %}
         </tbody>
       </table>
