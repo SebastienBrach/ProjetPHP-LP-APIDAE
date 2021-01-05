@@ -30,7 +30,6 @@ class ConcertController extends AbstractController
      * @Route("/concerts", name="liste_concert")
      */
     public function listeConcert(): Response {
-
         $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
         $concerts = $repository->findAll();
 
