@@ -22,19 +22,17 @@ class ShowConcertRepository extends ServiceEntityRepository
     // /**
     //  * @return ShowConcert[] Returns an array of ShowConcert objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
+    
+    public function findNextConcert() {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
+            ->andWhere('s.date > :now')
+            ->setParameter('now', new Datetime('now'))
+            ->orderBy('s.date', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?ShowConcert
