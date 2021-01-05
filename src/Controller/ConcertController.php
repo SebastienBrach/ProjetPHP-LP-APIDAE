@@ -18,9 +18,6 @@ class ConcertController extends AbstractController
      * @Route("/", name="home")
      */
     public function index(): Response {
-        // $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
-        // $concerts = $repository->findAll();
-
         $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
         $concerts = $repository->findNextConcert();
 
