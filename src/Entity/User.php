@@ -106,7 +106,7 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = self::ROLE_USER;
+        $roles[] = self::ROLE_ADMIN;
 
         return array_unique($roles);
     }

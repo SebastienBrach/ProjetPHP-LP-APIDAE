@@ -24,7 +24,6 @@ class ConcertController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(ShowConcert::class);
         $concerts = $repository->findNextConcert();
 
-
         return $this->render('index.html.twig', [
             'concerts' => $concerts,
         ]);

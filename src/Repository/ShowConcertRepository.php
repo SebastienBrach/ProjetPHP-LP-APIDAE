@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ShowConcert;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @method ShowConcert|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,14 +20,13 @@ class ShowConcertRepository extends ServiceEntityRepository
         parent::__construct($registry, ShowConcert::class);
     }
 
-    // /**
-    //  * @return ShowConcert[] Returns an array of ShowConcert objects
-    //  */
-    
+    /**
+    * @return ShowConcert[] Returns an array of ShowConcert objects
+    */
     public function findNextConcert() {
         return $this->createQueryBuilder('s')
             ->andWhere('s.date > :now')
-            ->setParameter('now', new Datetime('now'))
+            ->setParameter('now', new \Datetime('now'))
             ->orderBy('s.date', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
